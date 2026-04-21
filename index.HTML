@@ -56,7 +56,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
         }
 
         .login-card,
@@ -497,7 +497,7 @@
             <div>
                 <h1>Gestión de Almacén</h1>
                 <p id="system-date" style="color: var(--text-muted); font-size: 0.9rem;"></p>
-                <p id="cloud-info" style="color: var(--primary); font-size: 0.85rem;"></p>            </div>
+            </div>
             <div class="user-info">
                 <span id="role-badge" class="badge"></span>
                 <span id="current-user-name" style="font-weight: 600;"></span>
@@ -727,21 +727,11 @@
                 renderAdminHistory(logs);
             });
 
-            // Clock .............................................................
-           setInterval(() => {
-    const now = new Date();
-
-    document.getElementById('system-date').innerText =
-        "Hora del sistema: " + now.toLocaleString();
-
-    document.getElementById('cloud-info').innerText =
-        "Ejecutándose en la nube (Vercel) 🌐 | Acceso remoto activo";
-}, 1000);
-function fakeIP() {
-    return "Servidor Cloud: vercel.app";
-}
-
-document.getElementById('cloud-info').innerText += " | " + fakeIP();
+            // Clock
+            setInterval(() => {
+                document.getElementById('system-date').innerText = new Date().toLocaleString();
+            }, 1000);
+        }
 
         // Initialize as guest
         window.onload = () => {
